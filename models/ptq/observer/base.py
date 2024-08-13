@@ -16,9 +16,9 @@ class BaseObserver:
         if not isinstance(v, torch.Tensor):
             v = torch.tensor(v)
         v = v.detach()
-        if self.module_type in ['conv_weight', 'linear_weight']:
+        if self.module_type in ["conv_weight", "linear_weight"]:
             v = v.reshape(v.shape[0], -1)
-        elif self.module_type == 'activation':
+        elif self.module_type == "activation":
             if len(v.shape) == 4:
                 v = v.permute(0, 2, 3, 1)
             v = v.reshape(-1, v.shape[-1])

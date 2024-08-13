@@ -7,8 +7,7 @@ from .base import BaseObserver
 class MinmaxObserver(BaseObserver):
 
     def __init__(self, module_type, bit_type, calibration_mode):
-        super(MinmaxObserver, self).__init__(module_type, bit_type,
-                                             calibration_mode)
+        super(MinmaxObserver, self).__init__(module_type, bit_type, calibration_mode)
         self.symmetric = self.bit_type.signed
 
     def update(self, v):
@@ -24,7 +23,7 @@ class MinmaxObserver(BaseObserver):
         else:
             self.min_val = torch.min(cur_min, self.min_val)
 
-        if self.calibration_mode == 'layer_wise':
+        if self.calibration_mode == "layer_wise":
             self.max_val = self.max_val.max()
             self.min_val = self.min_val.min()
 

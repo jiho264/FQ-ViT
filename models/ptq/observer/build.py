@@ -6,11 +6,11 @@ from .percentile import PercentileObserver
 from .ptf import PtfObserver
 
 str2observer = {
-    'minmax': MinmaxObserver,
-    'ema': EmaObserver,
-    'omse': OmseObserver,
-    'percentile': PercentileObserver,
-    'ptf': PtfObserver
+    "minmax": MinmaxObserver,
+    "ema": EmaObserver,
+    "omse": OmseObserver,
+    "percentile": PercentileObserver,
+    "ptf": PtfObserver,
 }
 
 

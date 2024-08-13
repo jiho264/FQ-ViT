@@ -21,6 +21,6 @@ class Log2Quantizer(BaseQuantizer):
         return outputs
 
     def dequantize(self, inputs):
-        outputs = 2**(-1 * inputs)
+        outputs = 2 ** (-1 * inputs)
         outputs[self.softmax_mask] = 0
         return outputs

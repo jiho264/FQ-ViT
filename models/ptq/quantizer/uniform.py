@@ -14,7 +14,8 @@ class UniformQuantizer(BaseQuantizer):
 
     def update_quantization_params(self, *args, **kwargs):
         self.scale, self.zero_point = self.observer.get_quantization_params(
-            *args, **kwargs)
+            *args, **kwargs
+        )
 
     def quant(self, inputs, scale=None, zero_point=None):
         if scale is None:
@@ -25,8 +26,9 @@ class UniformQuantizer(BaseQuantizer):
         scale = scale.reshape(range_shape)
         zero_point = zero_point.reshape(range_shape)
         outputs = inputs / scale + zero_point
-        outputs = outputs.round().clamp(self.bit_type.lower_bound,
-                                        self.bit_type.upper_bound)
+        outputs = outputs.round().clamp(
+            self.bit_type.lower_bound, self.bit_type.upper_bound
+        )
         return outputs
 
     def dequantize(self, inputs, scale=None, zero_point=None):
